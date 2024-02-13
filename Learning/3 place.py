@@ -29,3 +29,4 @@ anotherBtn = tk.Button(root, text="Place button")
 anotherBtn.place(x=150, y=300, height=50, width=200)
 
 root.mainloop()
+# Got to Practice/message_popup.py after this file
