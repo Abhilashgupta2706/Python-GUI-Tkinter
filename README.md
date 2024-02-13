@@ -10,15 +10,15 @@ Make sure you have the latest version of Python installed.
 git clone https://github.com/Abhilashgupta2706/Python-GUI-Tkinter.git
 ```
 
-```bash
-pip install -r requirements.txt
-```
+[//]: # (```bash)
+
+[//]: # (pip install -r requirements.txt)
+
+[//]: # (```)
 
 ### Running The App
 
 ```bash
-python3 main.py
-or 
 python3 <Absolute Path of file>
 ```
 
