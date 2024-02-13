@@ -10,6 +10,23 @@ class MyGUI:
         self.root.title("Message Popup")
         self.root.geometry("500x300")
 
+        # Creating menu bar in the Tkinter
+        self.menubar = tk.Menu(self.root)
+
+        self.file_menu = tk.Menu(self.menubar, tearoff=0)  # tearoff to avoid dash line or space above menu
+        # Adding menu items
+        self.file_menu.add_command(label="Close", command=self.on_closing)
+        self.file_menu.add_separator()  # To add a seperator line between items
+        self.file_menu.add_command(label="Direct Exit", command=exit)
+
+        self.action_menu = tk.Menu(self.menubar, tearoff=0)
+        self.action_menu.add_command(label="Show message", command=self.show_message)
+
+        # Adding menu item's heading
+        self.menubar.add_cascade(menu=self.file_menu, label="File")
+        self.menubar.add_cascade(menu=self.action_menu, label="Action")
+        self.root.config(menu=self.menubar)
+
         self.label = tk.Label(self.root, text="Write your message", font=("Arial", 18))
         self.label.pack(padx=10, pady=10)
 
@@ -31,8 +48,10 @@ class MyGUI:
                                 font=("Arial", 10),
                                 command=self.show_message)
         # Pass function (Don't call ex: self.show_message()) to execute on btn click
-
         self.button.pack(padx=10, pady=10)
+
+        self.clear_button = tk.Button(self.root, text="Clear", font=("Arial", 10), command=self.clear)
+        self.clear_button.pack(padx=10, pady=10)
 
         # "WM_DELETE_WINDOW":  tell that user is clicking on close "X" symbol
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
@@ -60,6 +79,9 @@ class MyGUI:
         # Confirmation dialog box
         if messagebox.askyesno(title="Close windows?", message="Do you really want to close this windows?"):
             self.root.destroy()  # To destroy the Tkinter
+
+    def clear(self):
+        self.textbox.delete('1.0', tk.END)
 
 
 MyGUI()
